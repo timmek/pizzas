@@ -18,7 +18,7 @@ int Pizzeria::makeOrder(Pizzas pizzas)
 
 double Pizzeria::calculatePrice(int orderId)
 {
-    auto order = std::find_if(orders_.begin(), orders_.end(), [orderId](const auto & order)
+    auto order = std::find_if(orders_.begin(), orders_.end(), [orderId](const auto& order)
     {
         return std::get<0>(order) == orderId;
     });
@@ -39,7 +39,7 @@ double Pizzeria::calculatePrice(int orderId)
 
 void Pizzeria::bakePizzas(int orderId)
 {
-    auto order = std::find_if(orders_.begin(), orders_.end(), [orderId](const auto & order)
+    auto order = std::find_if(orders_.begin(), orders_.end(), [orderId](const auto& order)
     {
         return std::get<0>(order) == orderId;
     });
@@ -52,9 +52,9 @@ void Pizzeria::bakePizzas(int orderId)
             std::this_thread::sleep_for(pizza->getBakingTime());
         }
         std::get<Status>(*order) = Status::Baked;
+        return;
     }
-    else
-        throw std::invalid_argument("Order with id: " + std::to_string(orderId) + "not found");
+    throw std::invalid_argument("Order with id: " + std::to_string(orderId) + "not found");
 }
 
 void Pizzeria::completeOrder(int orderId)
@@ -67,9 +67,9 @@ void Pizzeria::completeOrder(int orderId)
     {
         std::cout << "Order " << orderId << " completed" << std::endl;
         std::get<Status>(*order) = Status::Completed;
+        return;
     }
-    else
-        throw std::invalid_argument("Order with id: " + std::to_string(orderId) + "not found");
+    throw std::invalid_argument("Order with id: " + std::to_string(orderId) + "not found");
 }
 
 
