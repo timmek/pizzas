@@ -4,6 +4,5 @@
 class Margherita : public Pizza
 {
 public:
-    Margherita() = delete;
-    Margherita(double price);
+    Margherita();
 };

@@ -18,7 +18,7 @@ public:
 TEST_F(PizzeriaTest, priceForMargherita25AndFunghi30ShouldBe55)
 {
     // Given
-    Pizzas pizzas = {new Margherita{25.0}, new Funghi{30.0}};
+    Pizzas pizzas = {new Margherita, new Funghi};
 
     // When
     auto orderId = pizzeria.makeOrder(pizzas);
